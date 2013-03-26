@@ -1,0 +1,18 @@
+Game {
+	layers: ['1', '2', '3']
+}
+
+Junk {
+	angle: 3.14/4
+    image: "game/images/junkpaper.png"
+}
+
+Asteroid {
+    angle: 3.14/4
+    image: "game/images/asteroid.png"
+}
+
+Ship {
+    image: "game/images/ship.png"
+    pos: (200, 450)
+}
