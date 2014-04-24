@@ -13,7 +13,7 @@ class JunkFactory(spyral.Actor):
         self.scene = scene
         
     def main(self, dt):
-        delay = spyral.Animation('delay', spyral.animator.Linear(600, 0), duration = 4.0)
+        delay = spyral.Animation('delay', spyral.easing.Linear(600, 0), duration = 4.0)
         while True:
             self.run_animation(delay)
             self.scene.junks.append(Junk(self.scene))
@@ -30,10 +30,11 @@ class Ship(spyral.Sprite):
 
 class SpaceRecycler(spyral.Scene):
     def __init__(self):
-        spyral.Scene.__init__(self)
-        self.load_style("game\style.spys")
-        self.register("system.quit", sys.exit)
+        spyral.Scene.__init__(self, SIZE)
+        self.load_style("game/style.spys")
+        spyral.event.register("system.quit", sys.exit)
         
+        self.background = spyral.Image(size=SIZE)
         self.ship = Ship(self)
         self.junks = []
         self.junkFactory = JunkFactory(self)
